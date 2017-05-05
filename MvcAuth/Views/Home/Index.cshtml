@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Twitter Client</h1>
+    <p class="lead">Twitter client is a POC to demonstrate twitter API client implementation using  ASP.NET MVC , C#  and HTML</p>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Search Tweets </h2>
+        <p>
+            This app allows users to search tweets of a  specified user name and a search term .
+        </p>
+        <p>User can specify the number of tweets to be disaplyed for the search filter  </p>
+        <p>THe interface will display error message if username doesn't exists </p>
+        <p>Click @Html.ActionLink("here", "Search") to check out more.</p>
+    </div>
+
+
+    <div class="col-md-4">
+            <h2>Post tweets</h2>
+            <p>Besides searching tweets, authenticated users can post tweets from this interface.</p>
+            <p>Users can retweet from an existing tweet</p>
+        <p>Click @Html.ActionLink("here", "Post") to check out more.</p>
+        </div>
+      
+</div>

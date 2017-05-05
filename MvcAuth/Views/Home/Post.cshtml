@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using TweetSharp;
+
+@using (Html.BeginForm())
+{
+
+    <html>
+
+
+    <body>
+        <div>
+
+            @using (Html.BeginForm())
+            {
+
+                <br />
+
+                <textarea name="txtTweet" id="txtTweet" placeholder="Enter Status"
+                          style="font-size:10pt;height:100px;width:400px;" maxlength="140" onkeypress="if (this.value.length == this.getAttribute('maxlength')) alert('Max character reached')"></textarea>
+                    <div id="count"></div>
+                    <br />
+                    <br />
+                    <input type="submit" id="PostTweet" value="Post Tweet" />
+
+
+            }
+
+        </div>
+        <div>
+            @ViewBag.Status
+        </div>
+
+    </body>
+</html>
+}
+

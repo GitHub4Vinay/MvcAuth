@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+}
+@using TweetSharp;
+
+<script src="~/Scripts/jquery-1.4.2.min.js"></script>
+@using (Html.BeginForm())
+{
+    <html>
+
+    <body>
+        <div>
+
+            @using (Html.BeginForm())
+            {
+                <table>
+                    <tr>
+                        <td>
+                            <img src="~/Images/logo.png" />
+                        </td>
+                        <td> <h3>TwitterAPP</h3></td>
+                    </tr>
+                </table>
+
+                <label for="txtTwitterName">Twitter Name:</label>
+                <input type="text" name="txtTwitterName" id="txtTwitterName" required placeholder="Type a twitter name" style="margin:0 10px 0 0" />
+                <input type="text" name="txtTweetCount" id="txtTweetCount" placeholder="Enter a Number" style="margin:0 10px 0 0" />
+                <input type="text" name="txtHashtag" id="txtHashtag" placeholder="Enter Hashtag" style="margin:0 40px 0 0" />
+                <input type="submit" id="GetTweets" value="Get Tweets" />
+            }
+            </div>
+
+
+            @* List tweets here *@
+            <div>
+
+                @*@if (ViewBag.Tweets == null)
+                    { <strong>Invalid User Name</strong> }*@
+
+                @if (ViewBag.Tweets != null)
+
+                {
+
+                    IEnumerable<TweetDetails> tweets = ViewBag.Tweets as IEnumerable<TweetDetails>;
+
+
+
+                    foreach (var tweetall in tweets)
+                    {
+                        <div class="tweet">
+                            <div class="picture">
+                                <img src="@tweetall.ProfileImageUrl" alt="@tweetall.ScreenName" title="@tweetall.ScreenName" />
+                            </div>
+                            <div class="info">
+                                <span>@tweetall.UserName, @tweetall.Description - @tweetall.Location </span>
+                                <br />
+                                <a href="https://twitter.com/statuses/@tweetall.Id" class="text">
+                                    @tweetall.Tweet
+                                </a>
+                                <div class="action">
+                                    @tweetall.CreateDate
+
+                                    <a href="https://twitter.com/intent/tweet?in_reply_to=@tweetall.Id" target="_blank">Reply</a> |
+                                    <a href="https://twitter.com/intent/retweet?tweet_id=@tweetall.Id" target="_blank">Retweet</a> |
+                                    @*<a href="https://twitter.com/intent/favorite?tweet_id=@tweetall.Id" target="_blank">Favorite</a>*@
+                                </div>
+                            </div>
+                            <div class="clear">
+
+                            </div>
+
+                        </div>
+                    }
+                }
+
+                else
+                {
+
+                    @ViewBag.Result
+                }
+
+            </div>
+
+    </body>
+</html>
+}
